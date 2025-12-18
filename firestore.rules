@@ -1,0 +1,63 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	function isAdmin() {
+    	return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin;
+    }
+  
+  	function isMeOrFriend(userId) {
+    	return request.auth != null && (
+      	request.auth.uid == resource.data.id || 
+       	request.auth.uid in resource.data.friends
+      );
+    }
+    
+    function isMyFriendCode(friendCode) {
+    	return request.auth != null;
+    	// return request.auth != null && (
+    	// request.auth.uid == resource.data.userId
+    	// );
+    }
+    
+    // 🔥 CHILLS COLLECTION
+    match /chills/{chillId} {
+    	allow create: if request.auth != null;
+    
+      allow read, write, update: if request.auth != null &&
+        (
+        	isAdmin() ||
+        	request.auth.uid == resource.data.host || 
+         	request.auth.uid in resource.data.invited
+        );
+    }
+    
+    match /rally/{rallyId} {
+    	allow create: if request.auth != null;
+    
+      allow read, write, update: if request.auth != null &&
+        (
+        	isAdmin() ||
+        	request.auth.uid == resource.data.host || 
+         	request.auth.uid in resource.data.invited
+        );
+    }
+
+    // 🔥 USERS COLLECTION
+    match /users/{userId} {
+      // ✅ Read: Allowed if you are in the user's friends list or it's your own profile
+      allow read: if isAdmin() || isMeOrFriend(userId);
+
+      // ✅ Write: Only allowed if updating your own document
+      allow create, write, update: if isAdmin() || (request.auth != null && request.auth.uid == userId);
+    }
+    
+    match /friendCodes/{friendCode} {
+    	allow read: if true;
+  
+  		allow create: if isMyFriendCode(friendCode) || isAdmin();
+      
+      allow delete: if isMyFriendCode(friendCode) || isAdmin();
+    }
+  }
+}
