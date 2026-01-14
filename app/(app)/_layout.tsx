@@ -5,7 +5,7 @@ import "react-native-gesture-handler";
 import * as Linking from "expo-linking";
 import { Redirect, SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
-import { Text } from "react-native";
+import { Platform, Text } from "react-native";
 
 import { FirebaseDataProvider, useFirebaseData } from "@/hooks/useFirebaseData";
 import { useUserContext as useSession } from "@/lib/auth";
@@ -19,7 +19,9 @@ export default function AppLayout() {
 
   useEffect(() => {
     if (isDataLoaded) {
-      SplashScreen.hideAsync();
+      if (Platform.OS !== "web") {
+        SplashScreen.hideAsync();
+      }
 
       if (session && data.myUser?.id !== myId) {
         logOut();

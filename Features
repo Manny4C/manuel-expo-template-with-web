@@ -1,0 +1,43 @@
+# App Features
+
+This file documents all major user-facing features in the app. Update this file whenever new functionality is added.
+
+## Authentication & Onboarding
+- User sign up with email, password, and profile photo
+- User sign in with email and password
+- Onboarding flow for new users
+- Profile photo upload during sign up
+
+## User Profile
+- View own profile
+- View friend profiles
+- Change profile picture
+- Delete account
+- Log out
+
+## Friends System
+- Friend code system for adding friends
+- QR code generation for friend codes
+- Share friend code via native share functionality
+- Send friend invites using friend codes
+- Accept incoming friend requests
+- View friend list
+- Remove friends
+- Block friends
+- View incoming friend requests
+
+## Notifications
+- Push notifications for friend-related activities
+- Accept friend invite notifications
+
+## Location Services
+- Location tracking (native implementation available)
+
+## Camera & Media
+- Camera functionality for profile photos
+- Photo upload and storage
+
+## Navigation
+- Tab-based navigation
+- Modal navigation for add friend screen
+- Profile page navigation

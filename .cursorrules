@@ -1,0 +1,5 @@
+# Cursor Rules
+
+This file is automatically loaded by Cursor for every new agent session.
+
+IMPORTANT: Always read and follow the instructions in the `pre-prompt` file located in the workspace root. Those instructions should be considered as part of the system context for every interaction.

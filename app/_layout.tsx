@@ -1,4 +1,5 @@
 import { SplashScreen, Stack } from "expo-router";
+import { Platform } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { UpdateLoadingModal } from "@/components/UpdateLoadingModal";
@@ -6,8 +7,10 @@ import { SessionProvider } from "@/lib/auth";
 import { useRefresh } from "@/lib/expoUpdates";
 import { usePushNotifications } from "@/lib/notifications";
 
-// Initialize SplashScreen
-SplashScreen.preventAutoHideAsync();
+// Initialize SplashScreen (only on native platforms)
+if (Platform.OS !== "web") {
+  SplashScreen.preventAutoHideAsync();
+}
 
 export default function RootLayout() {
   const { pushToken } = usePushNotifications();

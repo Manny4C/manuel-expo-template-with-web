@@ -1,0 +1,14 @@
+# Pre-prompt Instructions
+
+Add your custom instructions, context, coding preferences, and guidelines here.
+This file will be automatically included in every new agent session.
+
+Example instructions you might want to add:
+- Coding style preferences
+- Project-specific conventions
+- Important context about the codebase
+- Preferred patterns or architectures
+- Any specific requirements or constraints
+
+## Feature Documentation
+Anytime we make a new agent and add functionality, review if we need to update the Features file, which should include all major user-facing features in the app.
