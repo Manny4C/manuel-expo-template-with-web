@@ -10,12 +10,14 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bythecollective.template",
+      "bundleIdentifier": "com.manuelcastro.template",
+      "appleTeamId": "A68654U5B9",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
+      "package": "com.manuelcastro.template",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -81,6 +83,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/c1feddb4-f07d-4c11-a87c-ba54476d78cb"
-    }
+    },
+    "owner": "castro-apps"
   }
 }

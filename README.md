@@ -2,6 +2,22 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Template defaults
+
+This template is pre-configured with Manuel Castro's account defaults:
+- **Expo Owner**: `castro-apps`
+- **iOS Bundle ID**: `com.manuelcastro.template` (update for your app)
+- **Android Package**: `com.manuelcastro.template` (update for your app)
+- **Apple Team ID**: `A68654U5B9`
+
+**Important**: When creating a new project from this template, you'll need to:
+1. Update the bundle identifiers/package names in `app.json` to match your app name
+2. Initialize a new Expo project to get a unique `projectId`:
+   ```bash
+   eas init
+   ```
+   This will generate a new projectId and update the `updates.url` automatically.
+
 ## Get started
 
 1. Install [nvm][nvm] to have an isolated Node environment
