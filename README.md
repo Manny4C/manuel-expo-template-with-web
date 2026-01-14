@@ -1,6 +1,14 @@
-# Welcome to your Expo app 👋
+# Manuel Expo Template with Web Support 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
+## Web Support
+
+This template includes full web platform support alongside iOS and Android. Native features are automatically handled with platform-specific implementations:
+- **iOS/Android**: Uses native Expo modules (camera, notifications, location, etc.)
+- **Web**: Uses web-compatible APIs (browser notifications, geolocation, file input for camera, etc.)
+
+The bundler automatically selects the correct platform-specific files (`.native.ts` for mobile, `.web.ts` for web).
 
 ## Template defaults
 
@@ -68,6 +76,18 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+### Running on Web
+
+To run the app in a web browser:
+
+```bash
+npm run web
+# or
+npx expo start --web
+```
+
+The app will open in your default browser. All platform-specific features will use web-compatible implementations automatically.
 
 ## Make a build
 
