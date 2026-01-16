@@ -1,6 +1,6 @@
-# Manuel Expo Template with Web Support 👋
+# You Gotta See The Baby 👶
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A cross-platform app and website built with [Expo](https://expo.dev) that works on iOS, Android, and Web.
 
 ## Web Support
 
@@ -10,21 +10,19 @@ This template includes full web platform support alongside iOS and Android. Nati
 
 The bundler automatically selects the correct platform-specific files (`.native.ts` for mobile, `.web.ts` for web).
 
-## Template defaults
+## Project Configuration
 
-This template is pre-configured with Manuel Castro's account defaults:
+This project is configured with:
 - **Expo Owner**: `castro-apps`
-- **iOS Bundle ID**: `com.manuelcastro.template` (update for your app)
-- **Android Package**: `com.manuelcastro.template` (update for your app)
+- **iOS Bundle ID**: `com.manuelcastro.yougottaseethebaby`
+- **Android Package**: `com.manuelcastro.yougottaseethebaby`
 - **Apple Team ID**: `A68654U5B9`
 
-**Important**: When creating a new project from this template, you'll need to:
-1. Update the bundle identifiers/package names in `app.json` to match your app name
-2. Initialize a new Expo project to get a unique `projectId`:
-   ```bash
-   eas init
-   ```
-   This will generate a new projectId and update the `updates.url` automatically.
+**Note**: If you need to initialize a new Expo project to get a unique `projectId`, run:
+```bash
+eas init
+```
+This will generate a new projectId and update the `updates.url` automatically.
 
 ## Get started
 

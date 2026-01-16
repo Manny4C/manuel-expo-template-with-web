@@ -67,12 +67,23 @@ export function SessionProvider({
 
   // Keep you logged in
   useEffect(function setLoggedInState() {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setAuthUser(user);
-      setSession(user?.uid || null);
-    });
+    if (!auth) {
+      console.error("Firebase auth is not initialized. Please check your Firebase configuration.");
+      setLoading(false);
+      return;
+    }
 
-    return unsubscribe;
+    try {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        setAuthUser(user);
+        setSession(user?.uid || null);
+      });
+
+      return unsubscribe;
+    } catch (error) {
+      console.error("Error setting up auth state listener:", error);
+      setLoading(false);
+    }
   }, []);
 
   // Update the user's push token in your database

@@ -12,3 +12,12 @@ Example instructions you might want to add:
 
 ## Feature Documentation
 Anytime we make a new agent and add functionality, review if we need to update the Features file, which should include all major user-facing features in the app.
+
+## Time Handling
+When working with times and dates:
+- **User Interface**: Always display times in the user's local timezone. Convert UTC times from the database to local time before displaying to users.
+- **Database Storage**: Always save times to the database in UTC format. This is the standard practice and ensures consistency across different timezones.
+- When implementing time-related features, ensure proper conversion between UTC (storage) and local time (display).
+
+## Firebase Database
+- **Indexes**: Do not create or rely on indexes within the Firebase database. Design queries and data structures to work without requiring database indexes.

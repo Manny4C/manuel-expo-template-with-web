@@ -12,10 +12,10 @@ export default function RootHTML({ children }: PropsWithChildren) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="apple-itunes-app" content="app-id=6755091558" />
-        <title>Stampede</title>
+        <title>You Gotta See The Baby</title>
         <meta
           name="description"
-          content="Discover San Francisco with friends, collect stamps, and have fun!"
+          content="You Gotta See The Baby - A fun way to share moments with friends!"
         />
         {/*
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native.

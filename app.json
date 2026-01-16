@@ -1,23 +1,23 @@
 {
   "expo": {
-    "name": "template",
-    "slug": "template",
+    "name": "You Gotta See The Baby",
+    "slug": "you-gotta-see-the-baby",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "template",
+    "scheme": "yougottaseethebaby",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.manuelcastro.template",
+      "bundleIdentifier": "com.manuelcastro.yougottaseethebaby",
       "appleTeamId": "A68654U5B9",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
-      "package": "com.manuelcastro.template",
+      "package": "com.manuelcastro.yougottaseethebaby",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -75,14 +75,11 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "c1feddb4-f07d-4c11-a87c-ba54476d78cb"
+        "projectId": "9e83fd96-e42b-4d83-9b4f-1f9d736a6f37"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/c1feddb4-f07d-4c11-a87c-ba54476d78cb"
     },
     "owner": "castro-apps"
   }

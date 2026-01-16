@@ -46,3 +46,25 @@ export async function getPhotoUri(photoId: string) {
     return null;
   }
 }
+
+export async function uploadPhoto(
+  userId: string,
+  photoUri: string
+): Promise<{ photoId: string; photoUri: string }> {
+  const photoId = `${userId}-${Date.now()}.jpeg`;
+
+  // Fetch the file from URI and convert to Blob
+  const response = await fetch(photoUri);
+  const blob = await response.blob();
+
+  // Define storage reference
+  const imageRef = storageRef(storage, photoId);
+
+  // Upload the image
+  await uploadBytes(imageRef, blob);
+
+  // Get the download URL
+  const downloadUrl = await getDownloadURL(imageRef);
+
+  return { photoId, photoUri: downloadUrl };
+}

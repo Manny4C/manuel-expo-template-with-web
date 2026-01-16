@@ -54,10 +54,83 @@ service cloud.firestore {
     
     match /friendCodes/{friendCode} {
     	allow read: if true;
-  
+
   		allow create: if isMyFriendCode(friendCode) || isAdmin();
-      
+
       allow delete: if isMyFriendCode(friendCode) || isAdmin();
+    }
+
+    // 👶 SLUGS COLLECTION - URL slug reservation
+    match /slugs/{slug} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if request.auth != null
+        && resource.data.ownerId == request.auth.uid;
+    }
+
+    // 👶 BABY PAGES COLLECTION
+    match /babyPages/{pageId} {
+      // Public pages readable by anyone for searchable, authenticated for private
+      allow read: if resource.data.privacy == 'searchable'
+        || (request.auth != null);
+
+      allow create: if request.auth != null
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if request.auth != null
+        && resource.data.ownerId == request.auth.uid;
+    }
+
+    // 👶 AVAILABILITY SLOTS COLLECTION
+    match /availabilitySlots/{slotId} {
+      // Anyone can read availability (for public booking pages)
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if request.auth != null
+        && resource.data.ownerId == request.auth.uid;
+    }
+
+    // 👶 BOOKINGS COLLECTION
+    match /bookings/{bookingId} {
+      // Helper to check if user is page owner
+      function isPageOwner(babyPageId) {
+        return get(/databases/$(database)/documents/babyPages/$(babyPageId)).data.ownerId == request.auth.uid;
+      }
+
+      // Visitor can read their own bookings, page owner can read all
+      allow read: if request.auth != null && (
+        resource.data.visitorId == request.auth.uid ||
+        isPageOwner(resource.data.babyPageId)
+      );
+
+      allow create: if request.auth != null
+        && request.resource.data.visitorId == request.auth.uid;
+
+      // Visitor can update (cancel/reschedule), owner can update (approve/reject)
+      allow update: if request.auth != null && (
+        resource.data.visitorId == request.auth.uid ||
+        isPageOwner(resource.data.babyPageId)
+      );
+
+      // No hard delete - use status change
+      allow delete: if false;
+    }
+
+    // 👶 GUEST LISTS COLLECTION
+    match /guestLists/{guestId} {
+      allow read: if request.auth != null
+        && resource.data.ownerId == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if request.auth != null
+        && resource.data.ownerId == request.auth.uid;
+    }
+
+    // 📧 EMAIL QUEUE (for Firebase extension)
+    match /mail/{emailId} {
+      allow read: if false;
+      allow create: if request.auth != null;
     }
   }
 }
